@@ -70,6 +70,7 @@ def getData():
     
 def animate(i):
         global smoothx,smoothy
+        score = 0
         getData()
         smoothx = smooth(mydatax[-100:], 10)
         smoothy = smooth(mydatay[-100:], 10)
@@ -78,12 +79,14 @@ def animate(i):
         smoothy = smoothy[-90:]
         ax1.set_xlim(0,60)
         ax1.set_ylim(0,60)
+        if(len(smoothx) >= 90 and len(smoothy) >= 90):
+            score = scoreRectangle(18,18,8,8)
+        fig.suptitle("score %d" % score)
         ax1.scatter(smoothy[0:len(smoothx)], smoothx[0:len(smoothy)])
         ax2.plot(smoothx)
         ax3.plot(smoothy)
         ax4.add_patch(rectangle)
-        if(len(smoothx) >= 90 and len(smoothy) >= 90):
-            print(scoreRectangle(18,18,8,8))
+        
 
 try:
     arduino = serial.Serial("COM3", baudrate = 250000, timeout = 1)

@@ -24,10 +24,10 @@ def scoreRectangle(x,y,h,w):
     global smoothx,smoothy
     sx = smoothx
     sy = smoothy
-    for i in range(0,80):
+    for i in range(1,89):
         dx = max(abs(sx[i] - (x+w/2)) - w / 2, 0)
         dy = max(abs(sy[i] - (y+h/2)) - h / 2, 0)
-    return math.sqrt(dx * dx + dy * dy)
+    return math.sqrt(dx * dx + dy * dy)*10
 
 def smooth(data, window):
     count = 0

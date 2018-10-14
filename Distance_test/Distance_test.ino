@@ -12,7 +12,7 @@ int ech4 =  12;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(250000);
   pinMode(ech1, INPUT);
   pinMode(trig1, OUTPUT);
   pinMode(trig2, OUTPUT);
@@ -83,7 +83,7 @@ void loop() {
   Serial.println(y/58.2);
   
   Serial.flush();
-  delay(200);
+  delay(30);
 }
 
 long * smooth(long * data, int window){

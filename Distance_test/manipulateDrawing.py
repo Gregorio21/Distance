@@ -31,6 +31,7 @@ def smooth(data, window):
 def animate(i):
         global smoothx,smoothy
         data = str(arduino.readline())
+        print(data)
         data = data.replace("\\","")
         data = data.replace("\'", "")
         data = re.sub('[brn]', '', data)
@@ -52,14 +53,14 @@ def animate(i):
         ax1.clear()
         smoothx = smoothx[-90:]
         smoothy = smoothy[-90:]
-        ax1.set_xlim(0,60)
-        ax1.set_ylim(0,60)
+        ax1.set_xlim(3,20)
+        ax1.set_ylim(3,20)
         ax1.scatter(smoothy[0:len(smoothx)], smoothx[0:len(smoothy)])
         
 
 
 try:
-    arduino = serial.Serial("COM3", timeout = 1)
+    arduino = serial.Serial("COM3", baudrate = 250000, timeout = 1)
 except:
     print("invalid port")
 
